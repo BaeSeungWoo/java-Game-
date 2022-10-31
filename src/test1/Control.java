@@ -17,6 +17,7 @@ public class Control extends KeyAdapter implements Runnable {
 		this.unit = unit;
 	}
 
+	// 키를 눌렀을 때
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
@@ -34,6 +35,7 @@ public class Control extends KeyAdapter implements Runnable {
 		}
 	}
 
+	// 키를 눌렀다 뗐을 때
 	@Override
 	public void keyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
@@ -52,6 +54,7 @@ public class Control extends KeyAdapter implements Runnable {
 		}
 	}
 
+	// 비행기가 화면 밖으로 나가는 것 막기.
 	public void keyProcess() {
 
 		if (KeyUp == true) {
