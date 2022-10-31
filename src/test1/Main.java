@@ -28,8 +28,6 @@ public class Main extends JFrame implements Runnable {
 	Player player;
 	Unit unit;
 	Thread th;
-	
-	// 이미지 버퍼를 위해 삽입.
 	Image buffImg;
 	Graphics buffG;
 	boolean checkExit;
@@ -132,7 +130,7 @@ public class Main extends JFrame implements Runnable {
 		buffG.drawString("Player HP : " + this.player.hp, 700, 50);
 	}
 
-	// 적 비행기 그리기.
+	//  그리기.
 	public void drawEnemy(Graphics g) {
 		for (int i = 0; i < Enemys.size(); i++) {
 			buffG.drawImage(Enemys.get(i).resizeImg, Enemys.get(i).posX, Enemys.get(i).posY, this);
