@@ -5,10 +5,10 @@ import java.awt.event.KeyEvent;
 
 public class Control extends KeyAdapter implements Runnable {
 
-	boolean KeyUp = false; // À§·Î ÀÌµ¿.
-	boolean KeyDown = false; // ¹ØÀ¸·Î ÀÌµ¿.
-	boolean KeyLeft = false; // ¿ŞÂÊ ÀÌµ¿.
-	boolean KeyRight = false; // ¿À¸¥ÂÊ ÀÌµ¿.
+	boolean KeyUp = false; // ìœ„ë¡œ ì´ë™.
+	boolean KeyDown = false; // ë°‘ìœ¼ë¡œ ì´ë™.
+	boolean KeyLeft = false; // ì™¼ìª½ ì´ë™.
+	boolean KeyRight = false; // ì˜¤ë¥¸ìª½ ì´ë™.
 	Player player;
 	Main unit;
 
@@ -59,7 +59,7 @@ public class Control extends KeyAdapter implements Runnable {
 				this.player.posY -= 10;
 		}
 		if (KeyDown == true) {
-			if (this.player.posY < 584)
+			if (this.player.posY < 850)
 				this.player.posY += 10;
 		}
 		if (KeyLeft == true) {
@@ -72,9 +72,9 @@ public class Control extends KeyAdapter implements Runnable {
 		}
 	}
 
-	// ÇÃ·¹ÀÌ¾î ÀÌ¹ÌÁö¿¡ ´ëÇÑ Ã³¸®.
+	// í”Œë ˆì´ì–´ ì´ë¯¸ì§€ì— ëŒ€í•œ ì²˜ë¦¬.
 	public void PlayerProcess() {
-		// ÇÃ·¹ÀÌ¾î¿Í Àû ºñÇà±â³¢¸®ÀÇ Ãæµ¹½Ã Ã³¸®.
+		// í”Œë ˆì´ì–´ì™€ ì  ë¹„í–‰ê¸°ë¼ë¦¬ì˜ ì¶©ëŒì‹œ ì²˜ë¦¬.
 		for (int j = 0; j < this.unit.Enemys.size(); j++) {
 			if (unit.Crash(this.player.posX, this.player.posY, this.unit.Enemys.get(j).posX,
 					this.unit.Enemys.get(j).posY, this.player.width, this.player.height, this.unit.Enemys.get(j).width,
