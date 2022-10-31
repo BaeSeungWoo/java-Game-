@@ -1,7 +1,7 @@
 package test1;
 
 import javax.swing.JFrame;
-
+// 실행 파일
 public class Go extends JFrame {
 	public static void main(String[] args) {
 		Player player = new Player();
