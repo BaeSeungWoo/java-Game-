@@ -9,9 +9,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Main extends JFrame implements Runnable {
-
+          
+	// ì¶©ëŒ ê°’ ì„¤ì •.
 	boolean Crash(int x1, int y1, int x2, int y2, int w1, int h1, int w2, int h2) {
-		// x,y : À§Ä¡°ª , w,h : ÀÌ¹ÌÁöÀÇ ³ôÀÌ¿Í ±æÀÌ.
+		// x,y : ìœ„ì¹˜ê°’ , w,h : ì´ë¯¸ì§€ì˜ ë†’ì´ì™€ ê¸¸ì´.
 		boolean result = false;
 		if (Math.abs((x1 + w1 / 2) - (x2 + w2 / 2)) < (w2 / 2 + w1 / 2)
 				&& Math.abs((y1 + h1 / 2) - (y2 + h2 / 2)) < (h2 / 2 + h1 / 2))
@@ -21,12 +22,14 @@ public class Main extends JFrame implements Runnable {
 		return result;
 	}
 
-	Image background = new ImageIcon(Main.class.getResource("background.png")).getImage();
-	int frameWidth = 800;
-	int frameHeight = 900;
+	Image background = new ImageIcon(Main.class.getResource("background.png")).getImage(); // ë°°ê²½.
+	int frameWidth = 800; // í”„ë ˆì„ í­
+	int frameHeight = 900; // í”„ë ˆì„ ë†’ì´
 	Player player;
 	Unit unit;
 	Thread th;
+	
+	// ì´ë¯¸ì§€ ë²„í¼ë¥¼ ìœ„í•´ ì‚½ì….
 	Image buffImg;
 	Graphics buffG;
 	boolean checkExit;
@@ -40,7 +43,7 @@ public class Main extends JFrame implements Runnable {
 		Control key = new Control(player, this);
 		th = new Thread(key);
 		th.start();
-		homeframe();
+		homeframe(); 
 
 		Enemy storm1 = new Storm(100, 30);
 		Enemy thunder1 = new Thunder(300, 30);
@@ -64,17 +67,17 @@ public class Main extends JFrame implements Runnable {
 
 	}
 
-	/* »ı¼ºÀÚ¿¡ ½áµµ µÇ´Â °ÍµéÀÔ´Ï´Ù. ±×³É Àú´Â ÇÔ¼ö ¸¸µé¾î¼­ ›§½À´Ï´Ù. */
 	public void homeframe() {
-		setTitle("ºñÇà±â °ÔÀÓ");// Å¸ÀÌÆ²
-		setSize(frameWidth, frameHeight);// ÇÁ·¹ÀÓÀÇ Å©±â
-		setResizable(false);// Ã¢ÀÇ Å©±â¸¦ º¯°æÇÏÁö ¸øÇÏ°Ô
-		setLocationRelativeTo(null);// Ã¢ÀÌ °¡¿îµ¥ ³ª¿À°Ô
-		setLayout(null);// ·¹ÀÌ¾Æ¿ôÀ» ³»¸¾´ë·Î ¼³Á¤°¡´ÉÇÏ°Ô ÇØÁÜ.
-		setVisible(true);// Ã¢ÀÌ º¸ÀÌ°Ô
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// JFrameÀÌ Á¤»óÀûÀ¸·Î Á¾·áµÇ°Ô
+		setTitle("ë¹„í–‰ê¸° ê²Œì„");// íƒ€ì´í‹€
+		setSize(frameWidth, frameHeight);// í”„ë ˆì„ì˜ í¬ê¸°
+		setResizable(false);// ì°½ì˜ í¬ê¸°ë¥¼ ë³€ê²½í•˜ì§€ ëª»í•˜ê²Œ
+		setLocationRelativeTo(null);// ì°½ì´ ê°€ìš´ë° ë‚˜ì˜¤ê²Œ
+		setLayout(null);// ë ˆì´ì•„ì›ƒì„ ë‚´ë§˜ëŒ€ë¡œ ì„¤ì •ê°€ëŠ¥í•˜ê²Œ í•´ì¤Œ.
+		setVisible(true);// ì°½ì´ ë³´ì´ê²Œ
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// JFrameì´ ì •ìƒì ìœ¼ë¡œ ì¢…ë£Œë˜ê²Œ
 	}
 
+	// ë¹„í–‰ê¸°ì™€ ì¥ì• ë¬¼ì´ ë§¤ë„ëŸ½ê²Œ ì›€ì§ì´ë„ë¡ í•˜ê¸° ìœ„í•œ ë²„í¼.
 	public void paint(Graphics g) {
 		repaint();
 		buffImg = createImage(getWidth(), getHeight());
@@ -94,15 +97,16 @@ public class Main extends JFrame implements Runnable {
 
 	int count = 0;
 
-	// ¹è°æ ±×¸®±â.
+	// ë°°ê²½ ê·¸ë¦¬ê¸°.
 	public void drawBackGround(Graphics g) {
 		buffG.clearRect(0, 0, frameWidth, frameHeight);
 		buffG.drawImage(background, count, 0, this);
 	}
 
+	// í”Œë ˆì´ì–´ ê·¸ë¦¬ê¸°.
 	public void drawPlayer(Graphics g) {
 		buffG.drawImage(this.player.resizeImg, this.player.posX, this.player.posY, this);
-		// ÇÃ·¹ÀÌ¾îÀÇ ÇÇ°¡0ÀÌ µÇ¸é ¸ğµÎ Á¾·á.
+		// í”Œë ˆì´ì–´ì˜ í”¼ê°€0ì´ ë˜ë©´ ëª¨ë‘ ì¢…ë£Œ.
 		if (this.player.hp <= 0) {
 			try {
 				Thread.sleep(20);
@@ -110,23 +114,25 @@ public class Main extends JFrame implements Runnable {
 				e.printStackTrace();
 			}
 
-			// Àû ¸®½ºÆ® ÃÊ±âÈ­.
+			// ì  ë¦¬ìŠ¤íŠ¸ ì´ˆê¸°í™”.
 			Enemys = new ArrayList<Enemy>();
 			gameTimer(0);
-			System.out.println("°ÔÀÓÀÌ Á¾·áµÇ¾ú½À´Ï´Ù.");
-			System.out.format("¹öÆ¾ ½Ã°£ : [%s]%n", Main.timerBuffer);
+			System.out.println("ê²Œì„ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+			System.out.format("ë²„í‹´ ì‹œê°„ : [%s]%n", Main.timerBuffer);
 
-			// Frame ¾ø¾Ö±â.
+			// Frame ì—†ì• ê¸°.
 			this.checkExit = true;
 			this.dispose();
 		}
 
 	}
 
+	// í”Œë ˆì´ì–´ hp í‘œì‹œ.
 	public void drawStatus(Graphics g) {
 		buffG.drawString("Player HP : " + this.player.hp, 700, 50);
 	}
 
+	// ì  ë¹„í–‰ê¸° ê·¸ë¦¬ê¸°.
 	public void drawEnemy(Graphics g) {
 		for (int i = 0; i < Enemys.size(); i++) {
 			buffG.drawImage(Enemys.get(i).resizeImg, Enemys.get(i).posX, Enemys.get(i).posY, this);
@@ -134,6 +140,7 @@ public class Main extends JFrame implements Runnable {
 		}
 	}
 
+        // ê²Œì„ ì‹œê°„.
 	public static void gameTimer(int onOff) {
 		if (onOff == 1) {
 			gameTime = (int) System.currentTimeMillis() / 1000;
