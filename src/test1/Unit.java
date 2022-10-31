@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.ImageIcon;
 
 public class Unit {
-	
+	// 유닛 초기 설정값.
 	int hp;
 	int posX;
 	int posY;
@@ -17,7 +17,7 @@ public class Unit {
 }
 
 class Player extends Unit {
-
+        // 플레이어 설정.
 	public Player() {
 		this.hp = 15;
 		this.posX = 400;
@@ -33,7 +33,7 @@ class Enemy extends Unit {
 	public void move() {
 	}
 }
-
+// 폭풍 설정.
 class Storm extends Enemy{
 	public Storm(int posX, int posY) {
 		this.hp = 15;
@@ -55,7 +55,7 @@ class Storm extends Enemy{
 		}
 	}
 }
-
+// 번개 설정.
 class Thunder extends Enemy{
 	public Thunder(int posX, int posY) {
 		this.hp = 15;
@@ -77,7 +77,7 @@ class Thunder extends Enemy{
 		}
 	}
 }
-
+// 제트기 설정.
 class Jet extends Enemy{
 	public Jet(int posX, int posY) {
 		this.hp = 15;
